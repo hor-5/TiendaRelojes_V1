@@ -1,12 +1,12 @@
 import {
   Image, Text, HStack, Circle, Button, Heading, Stat,
-  VStack, StatLabel, StatNumber, StatHelpText, IconButton,Box
+  VStack, StatLabel, StatNumber, StatHelpText, IconButton, Box,SimpleGrid
 } from '@chakra-ui/react'
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from "next/link";
 import { ChevronLeftIcon } from '@chakra-ui/icons'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
 export default function ProductPage({ producto, precioDolar, imagenes, min }) {
 
@@ -26,24 +26,28 @@ export default function ProductPage({ producto, precioDolar, imagenes, min }) {
   }, [imagenes, selectedColor])
   return (
     <Box>
-      
-        <IconButton variant='outline'
-          colorScheme='blackAlpha'
-          aria-label='Volver'
-          fontSize='30px'
-          rounded='full'
-          m={2}
-          icon={<ChevronLeftIcon />} 
-          onClick={() => router.back()}
-          />
-      
+
+      <IconButton variant='outline'
+        colorScheme='blackAlpha'
+        aria-label='Volver'
+        fontSize='30px'
+        rounded='full'
+        m={2}
+        icon={<ChevronLeftIcon />}
+        onClick={() => router.back()}
+      />
+
       <HStack spacing={8} mb={10} mx={3}>
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <HStack>
+
+        </motion.div>
+        <VStack>
+        <SimpleGrid columns={[1, null, 2]} spacing='40px'>
+      <HStack>
             <VStack>
               {images.map((image) => (
                 <motion.div
@@ -65,8 +69,7 @@ export default function ProductPage({ producto, precioDolar, imagenes, min }) {
             </VStack>
             <Image src={selectedImage} boxSize="400px" objectFit="cover" />
           </HStack>
-        </motion.div>
-        <VStack>
+
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,9 +107,14 @@ export default function ProductPage({ producto, precioDolar, imagenes, min }) {
             </HStack>
           </motion.div>
 
+      </SimpleGrid>
+
           <Button colorScheme="blue" mb={20}>Agregar al carrito</Button>
         </VStack>
       </HStack>
+
+
+
     </Box>
   )
 }

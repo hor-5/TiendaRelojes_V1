@@ -10,7 +10,7 @@ const images = [
       "https://cdn.shopify.com/s/files/1/0650/8609/files/rolex_preowned_Banner_1.jpg?v=1619813418",
     alt: "Imagen 1",
     desc: "Descripción de la imagen 1",
-    href:"/marca/Rolex",
+    href:"/marcas/Rolex",
   },
   {
     url:
